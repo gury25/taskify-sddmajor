@@ -1,0 +1,40 @@
+{% load static %}
+
+<html data-bs-theme="dark">
+    <head>
+        <meta charset="utf-8" /> <!--setting charset-->
+        <meta name="viewport" content="width-device-width, initial-scale=1, maximum-scale=1"/> <!--setting width-->
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css"> <!--retriving bootstrap template-->
+        <title>Taskify | View Tasks</title>
+            
+    </head>
+
+    {% include 'base.html' %}
+
+    <div class="container shadow-md p-5 form-layout"> <!--adds margins-->
+    <h3 class="text-center">My Tasks</h3>
+    <hr>
+    
+    {% for task in tasks%}
+    <div class="container bg-black shadow-md p-5 form-layout" style="margin-top:20px; border-radius:10px"> <!--box for tasks-->
+            {{ task.title }}        
+            <br> <br>
+            {{ task.content|linebreaks }}
+            <br> <br>  
+            <p>Due Date: </p> {{ task.date_due }}
+            <br> <br>
+            <a class="btn btn-dark navbar-btn" type="button" href="{% url 'update-task' task.id %}"> Edit Task </a> <!--button to update task-->
+            <a class="btn btn-danger navbar-btn" type="button" href="{% url 'delete-task' task.id %}"> Delete Task </a> <!--button to delete task-->
+        </div>
+    {% endfor %}
+    
+    <br> <br> 
+    <a class="btn btn-info navbar-btn" type="button" href="{% url 'create-task' %}">Add a Task </a>
+    
+
+
+
+
+    
+</html>

@@ -1,0 +1,30 @@
+<!--index is homepage-->
+
+{% load static %}
+
+<html data-bs-theme="dark">
+    <head>
+        <meta charset="utf-8" /> <!--setting charset-->
+        <meta name="viewport" content="width-device-width, initial-scale=1, maximum-scale=1"/> <!--setting width-->
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css"> <!--retriving bootstrap template-->
+        <title>Taskify</title>
+            
+    </head>
+
+
+
+    <div class="container shadow-md p-5 form-layout" align="center" style="margin-top:120px;"> <!--adds margins and centers buttons-->
+    <h1 class="text-center">Welcome to Taskify</h1>
+    <hr>
+    <br> 
+    <a class="btn btn-info btn-lg" type="button" href="{% url 'view-tasks' %}"> My Tasks </a> <!--welcome button that takes user to dashboard --> 
+    &nbsp; &nbsp; &nbsp;
+    <a class="btn btn-info btn-lg" type="button" href="{% url 'calendar' %}"> My Calendar </a> <!--welcome button that takes user to calendar -->
+    &nbsp; &nbsp; &nbsp;
+    <a class="btn btn-info btn-lg" type="button" href="{% url 'quotes' %}"> Motivation </a> <!--welcome button that takes user to quotes -->
+    
+    </div>
+    <br> <br> <br> <br>
+    <h3 align="center" style="color: #FF7A59">Disclaimer: Do not edit the URL or else the program will stop working.</h3>
+</html>

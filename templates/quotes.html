@@ -1,0 +1,56 @@
+{% load static %}
+
+<html data-bs-theme="dark">
+    <head>
+        <meta charset="utf-8" /> <!--setting charset-->
+        <meta name="viewport" content="width-device-width, initial-scale=1, maximum-scale=1"/> <!--setting width-->
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css"> <!--retriving bootstrap template-->
+        <title>Taskify | Quotes</title>
+            
+    </head>
+
+    {% include 'base.html' %}
+
+    <div class="container bg-black shadow-md p-5 form-layout" style="margin-top:20px; border-radius:10px" align="center"> <!--box for quotes-->
+        
+        
+            <h1>Motivational Quotes</h1>
+            <br> <br>
+            <h3 class="quote_text">“In the middle of difficulty lies opportunity.” - Albert Einstein</h3>
+            <br> <br>
+            <button onclick="generateQuote()" class="btn btn-info navbar-btn btn-lg">Generate <span id="cog">⚙</span></button>
+        
+
+            <script> //javascript to get a random quote
+                var quotes = [
+                    "“The only way to do great work is to love what you do.” - Steve Jobs",
+                    "“In the middle of difficulty lies opportunity.” - Albert Einstein",
+                    "“Believe you can and you're halfway there.” - Theodore Roosevelt",
+                    "“Success is not final, failure is not fatal: It is the courage to continue that counts.” - Winston Churchill",
+                    "“The future belongs to those who believe in the beauty of their dreams.” - Eleanor Roosevelt",
+                    "“The best way to predict the future is to create it.” - Peter Drucker",
+                    "“Doubt kills more dreams than failure ever will.” – Suzy Kassem",
+                    "“Whether you think you can or think you can’t, you’re right.” – Henry Ford",
+                    "“All our dreams can come true if we have the courage to pursue them.” - Walt Disney",
+                    "“Concentrate all your thoughts upon the work in hand. The sun’s rays do not burn until brought to a focus.” - Alexander Graham Bell",
+                    "“Either you run the day or the day runs you. —Jim Rohn",
+                    "“I’m a great believer in luck, and I find the harder I work, the more I have of it.” - Thomas Jefferson",
+                    "“When we strive to become better than we are, everything around us becomes better too.” - Paulo Coelho",
+                    "“Opportunity is missed by most people because it is dressed in overalls and looks like work.” - Thomas Edison",
+                    "“Setting goals is the first step in turning the invisible into the visible.” - Tony Robbins",
+                ];
+                
+                let quoteText = document.querySelector(".quote_text"); //defines where to insert quote
+                
+                function generateQuote() {
+                    var randomIndex = Math.floor(Math.random() * quotes.length); //picks a random number in between 1 and the length of the quotes array
+                    var quote = quotes[randomIndex] //select quote using randomly generated number
+                    quoteText.innerHTML = quote 
+                }
+            </script>
+        
+        </body>
+        
+        
+</html>

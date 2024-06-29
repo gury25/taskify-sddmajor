@@ -1,0 +1,102 @@
+<!--navigation bar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black justify-content-center"> 
+
+    <a class="navbar-brand main-heading" href="{% url ''%}"> 
+            
+      &nbsp; &nbsp; &nbsp; Taskify
+    
+    </a>
+  
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <!--horizontal spacing (centering div doesn't work as it is centering between the taskify logo and the buttons, not to the center of teh page)-->
+    <div class="row justify-content-center w-100">
+      <h1 class="time" id="time" align="center"></h1> 
+      <h3 class="date" id="date" align="center"></h3>
+        
+    </div>
+    
+
+    <script> <!--script for clock-->
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+
+            const hour12 = hours % 12 || 12; <!--converting 24 hour to 12 hour-->
+            const minuteString = minutes < 10 ? '0' + minutes : minutes; <!--if less than 10, ad 0 to front-->
+            const secondString = seconds < 10 ? '0' + seconds : seconds;
+
+            const timeString = hour12 + ':' + minuteString + ':' + secondString + ' ' + ampm; <!--displaying hours, minutes and seconds together-->
+
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const dayName = days[now.getDay()];
+            const date = now.getDate();
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const monthName = months[now.getMonth()];
+            const year = now.getFullYear();
+
+            const dateString = dayName + ', ' + monthName + ' ' + date + ', ' + year; <!--displaying day, month and year together-->
+
+            document.getElementById('time').textContent = timeString;
+            document.getElementById('date').textContent = dateString;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+
+      <div class="collapse navbar-collapse text-center" id="navbarNavDropdown"> <!--when window is too small, buttons turn into dropdown menu-->
+
+        
+        <ul class="navbar-nav ms-auto">
+
+
+          &nbsp;     &nbsp;     &nbsp; 
+
+          <li class="nav-item">
+      
+            <a class="btn btn-outline-info navbar-btn" type="button" href="{% url 'view-tasks' %}"> Tasks </a> <!--nav bar button for tasks-->
+
+          </li>
+
+          <li class="nav-item">
+      
+            <a class="btn btn-outline-info navbar-btn" type="button" href="{% url 'calendar' %}"> Calendar </a> <!--nav bar button for calendar-->
+
+          </li>
+
+                
+
+          <li class="nav-item">
+
+            <a class="btn btn-outline-info navbar-btn" type="button" href="{% url 'quotes' %}"> Quotes </a> <!--nav bar button for quotes-->
+
+          </li>
+
+
+          &nbsp;     &nbsp;     &nbsp; 
+          
+
+        </ul>
+      
+        
+      </div>
+
+
+</nav>
